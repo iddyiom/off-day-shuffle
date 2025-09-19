@@ -48,6 +48,7 @@ export const SITES: Site[] = [
   { id: 6, name: "ZAA" },
   { id: 7, name: "TAA MWANZA" },
   { id: 8, name: "KIA" },
+  { id: 9, name: "TRC" },
 ];
 
 export const SHIFTS: Shift[] = [
