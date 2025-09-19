@@ -1,4 +1,4 @@
-import { WORKERS, SITES, SHIFTS, DAYS, type ScheduleSlot } from "@/types/scheduler";
+import { WORKERS, SITES, SHIFTS, DAYS, WORKER_SITE_ASSIGNMENTS, type ScheduleSlot } from "@/types/scheduler";
 
 export const generateSchedule = (): ScheduleSlot[] => {
   const schedule: ScheduleSlot[] = [];
@@ -24,17 +24,25 @@ export const generateSchedule = (): ScheduleSlot[] => {
 
     DAYS.forEach(day => {
       if (day !== workerOffDay) {
-        // Randomly assign site and shift for working days
-        const randomSite = SITES[Math.floor(Math.random() * SITES.length)];
-        const randomShift = SHIFTS[Math.floor(Math.random() * SHIFTS.length)];
+        // Get allowed sites for this worker
+        const workerAssignment = WORKER_SITE_ASSIGNMENTS.find(
+          assignment => assignment.workerId === worker.id
+        );
         
-        schedule.push({
-          workerId: worker.id,
-          day: day,
-          siteId: randomSite.id,
-          shiftId: randomShift.id,
-          isOffDay: false,
-        });
+        if (workerAssignment && workerAssignment.siteIds.length > 0) {
+          // Randomly assign from allowed sites
+          const allowedSiteIds = workerAssignment.siteIds;
+          const randomSiteId = allowedSiteIds[Math.floor(Math.random() * allowedSiteIds.length)];
+          const randomShift = SHIFTS[Math.floor(Math.random() * SHIFTS.length)];
+          
+          schedule.push({
+            workerId: worker.id,
+            day: day,
+            siteId: randomSiteId,
+            shiftId: randomShift.id,
+            isOffDay: false,
+          });
+        }
       }
     });
   });

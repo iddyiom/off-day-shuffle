@@ -13,6 +13,11 @@ export interface Shift {
   name: string;
 }
 
+export interface WorkerSiteAssignment {
+  workerId: number;
+  siteIds: number[];
+}
+
 export interface ScheduleSlot {
   workerId: number;
   day: string;
@@ -54,6 +59,24 @@ export const SITES: Site[] = [
 export const SHIFTS: Shift[] = [
   { id: 1, name: "DAY" },
   { id: 2, name: "NIGHT" },
+];
+
+export const WORKER_SITE_ASSIGNMENTS: WorkerSiteAssignment[] = [
+  { workerId: 1, siteIds: [1] }, // Dickson - JNIA
+  { workerId: 2, siteIds: [1] }, // David Lema - JNIA
+  { workerId: 3, siteIds: [3, 5, 9] }, // Kevin Mrema - MLOGANZILA, MUHIMBILI, TRC
+  { workerId: 4, siteIds: [3, 9] }, // Joseph - MLOGANZILA, TRC
+  { workerId: 5, siteIds: [4] }, // Alpha - MLIMANI
+  { workerId: 6, siteIds: [9, 1] }, // Petro Bahati - TRC, JNIA
+  { workerId: 7, siteIds: [4] }, // Samwel - MLIMANI
+  { workerId: 8, siteIds: [4] }, // Mhenga - MLIMANI
+  { workerId: 9, siteIds: [5, 9] }, // Leonard Maagi - MUHIMBILI, TRC
+  { workerId: 10, siteIds: [6] }, // Abel - ZAA
+  { workerId: 11, siteIds: [6] }, // Issa - ZAA
+  { workerId: 12, siteIds: [7] }, // Yohana - TAA MWANZA
+  { workerId: 13, siteIds: [7] }, // Rubibi Maulid - TAA MWANZA
+  { workerId: 14, siteIds: [8] }, // Muslim - KIA
+  { workerId: 15, siteIds: [8] }, // Samwel Gonza - KIA
 ];
 
 export const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
