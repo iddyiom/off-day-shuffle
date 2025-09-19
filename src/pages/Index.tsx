@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ScheduleHeader } from "@/components/ScheduleHeader";
 import { ScheduleGrid } from "@/components/ScheduleGrid";
 import { generateSchedule, validateSchedule } from "@/utils/scheduleGenerator";
-import { WORKERS, SITES, type ScheduleSlot } from "@/types/scheduler";
+import { TECHNICIANS, SITES, type ScheduleSlot } from "@/types/scheduler";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -21,7 +21,7 @@ const Index = () => {
       setSchedule(newSchedule);
       toast({
         title: "Schedule Generated",
-        description: "New weekly schedule created with guaranteed off days for all workers.",
+        description: "New weekly schedule created with guaranteed off days for all technicians.",
       });
     } else {
       toast({
@@ -37,7 +37,7 @@ const Index = () => {
       <div className="container mx-auto py-8 space-y-8">
         <ScheduleHeader 
           onGenerateSchedule={handleGenerateSchedule}
-          totalWorkers={WORKERS.length}
+          totalTechnicians={TECHNICIANS.length}
           totalSites={SITES.length}
         />
         

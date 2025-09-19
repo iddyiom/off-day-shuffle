@@ -4,18 +4,18 @@ import { CalendarDays, Users, MapPin, RotateCcw } from "lucide-react";
 
 interface ScheduleHeaderProps {
   onGenerateSchedule: () => void;
-  totalWorkers: number;
+  totalTechnicians: number;
   totalSites: number;
 }
 
-export const ScheduleHeader = ({ onGenerateSchedule, totalWorkers, totalSites }: ScheduleHeaderProps) => {
+export const ScheduleHeader = ({ onGenerateSchedule, totalTechnicians, totalSites }: ScheduleHeaderProps) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Worker Scheduler</h1>
+          <h1 className="text-3xl font-bold text-foreground">Technician Scheduler</h1>
           <p className="text-muted-foreground mt-2">
-            Manage weekly schedules with guaranteed off days for each worker
+            Manage weekly schedules with guaranteed off days for each technician
           </p>
         </div>
         <Button onClick={onGenerateSchedule} size="lg" className="gap-2">
@@ -31,8 +31,8 @@ export const ScheduleHeader = ({ onGenerateSchedule, totalWorkers, totalSites }:
               <Users className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Total Workers</p>
-              <p className="text-2xl font-bold text-foreground">{totalWorkers}</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Technicians</p>
+              <p className="text-2xl font-bold text-foreground">{totalTechnicians}</p>
             </div>
           </div>
         </Card>

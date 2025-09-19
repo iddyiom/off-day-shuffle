@@ -1,12 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  WORKERS, 
+  TECHNICIANS, 
   SITES, 
   SHIFTS, 
   DAYS, 
   type ScheduleSlot, 
-  type Worker, 
+  type Technician, 
   type Site, 
   type Shift 
 } from "@/types/scheduler";
@@ -16,9 +16,9 @@ interface ScheduleGridProps {
 }
 
 export const ScheduleGrid = ({ schedule }: ScheduleGridProps) => {
-  const getWorkerName = (workerId: number): string => {
-    const worker = WORKERS.find(w => w.id === workerId);
-    return worker?.name || "Unknown";
+  const getTechnicianName = (workerId: number): string => {
+    const technician = TECHNICIANS.find(t => t.id === workerId);
+    return technician?.name || "Unknown";
   };
 
   const getSiteName = (siteId?: number): string => {
@@ -44,7 +44,7 @@ export const ScheduleGrid = ({ schedule }: ScheduleGridProps) => {
           {/* Header */}
           <div className="grid grid-cols-8 gap-2 mb-4">
             <div className="font-semibold text-foreground p-3 bg-muted rounded-lg">
-              Worker
+              Technician
             </div>
             {DAYS.map(day => (
               <div key={day} className="font-semibold text-center text-foreground p-3 bg-muted rounded-lg">
@@ -55,18 +55,18 @@ export const ScheduleGrid = ({ schedule }: ScheduleGridProps) => {
 
           {/* Schedule Rows */}
           <div className="space-y-2">
-            {WORKERS.map(worker => (
-              <div key={worker.id} className="grid grid-cols-8 gap-2">
-                {/* Worker Name */}
+            {TECHNICIANS.map(technician => (
+              <div key={technician.id} className="grid grid-cols-8 gap-2">
+                {/* Technician Name */}
                 <div className="p-3 bg-card border rounded-lg flex items-center">
                   <span className="font-medium text-card-foreground truncate">
-                    {worker.name}
+                    {technician.name}
                   </span>
                 </div>
 
                 {/* Daily Schedule */}
                 {DAYS.map(day => {
-                  const slot = getScheduleSlot(worker.id, day);
+                  const slot = getScheduleSlot(technician.id, day);
                   
                   if (slot?.isOffDay) {
                     return (

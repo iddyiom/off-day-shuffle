@@ -1,4 +1,4 @@
-export interface Worker {
+export interface Technician {
   id: number;
   name: string;
 }
@@ -13,7 +13,7 @@ export interface Shift {
   name: string;
 }
 
-export interface WorkerSiteAssignment {
+export interface TechnicianSiteAssignment {
   workerId: number;
   siteIds: number[];
 }
@@ -26,7 +26,7 @@ export interface ScheduleSlot {
   isOffDay?: boolean;
 }
 
-export const WORKERS: Worker[] = [
+export const TECHNICIANS: Technician[] = [
   { id: 1, name: "Dickson" },
   { id: 2, name: "David Lema" },
   { id: 3, name: "Kevin Mrema" },
@@ -61,7 +61,7 @@ export const SHIFTS: Shift[] = [
   { id: 2, name: "NIGHT" },
 ];
 
-export const WORKER_SITE_ASSIGNMENTS: WorkerSiteAssignment[] = [
+export const TECHNICIAN_SITE_ASSIGNMENTS: TechnicianSiteAssignment[] = [
   { workerId: 1, siteIds: [1] }, // Dickson - JNIA
   { workerId: 2, siteIds: [1] }, // David Lema - JNIA
   { workerId: 3, siteIds: [3, 5, 9] }, // Kevin Mrema - MLOGANZILA, MUHIMBILI, TRC
